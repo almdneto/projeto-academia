@@ -132,14 +132,17 @@ services:
   phpmyadmin:
     image: phpmyadmin:latest
 
-    container_name: acaddemia_phpmyadmin
+    container_name: academia_phpmyadmin
 
     environment:
       # Diz ao phpMyAdmin onde fica o MySQL (usamos o nome do serviço!)
       # Dentro da rede Docker, os serviços se comunicam pelo nome, não por IP.
       PMA_HOST: mysql
       PMA_USER: root
-      PMA_PASSWORD: senha_root_123
+      PMA_PASSWORD: 
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+      MYSQL_ROOT_PASSWORD: 
+      MYSQL_DATABASE: aulaLogin
 
     ports:
       # Acesse o phpMyAdmin em: http://localhost:8081

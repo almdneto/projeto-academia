@@ -1,23 +1,41 @@
 -- ============================================================
--- INIT.SQL - Inicialização do Banco de Dados
+-- SCRIPT DE INICIALIZAÇÃO DO BANCO DE DADOS
 -- ============================================================
--- Este arquivo é executado automaticamente quando o container
--- do MySQL sobe pela primeira vez. Ele cria as tabelas e
--- insere dados iniciais necessários para o projeto.
+-- Este arquivo SQL é executado AUTOMATICAMENTE pelo MySQL
+-- quando o container sobe pela PRIMEIRA VEZ.
 --
--- LOCALIZAÇÃO: docker/init.sql
--- EXECUÇÃO: Automática via docker-compose.yml
+-- Ele é responsável por criar a ESTRUTURA do banco (as tabelas).
+-- Para inserir o usuário administrador de teste, acesse:
+--   http://localhost:8080/seed.php   (após subir os containers)
 -- ============================================================
 
--- Cria a tabela de usuários (exemplo básico)
-CREATE TABLE IF NOT EXISTS users (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(255) NOT NULL,
-    email VARCHAR(255) UNIQUE NOT NULL,
-    password VARCHAR(255) NOT NULL,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-);
+-- Garante que estamos usando o banco de dados correto.
+-- O nome "aulaLogin" foi definido no docker-compose.yml.
+USE aulaLogin;
 
--- Insere um usuário de exemplo
-INSERT INTO users (name, email, password) VALUES
-('Admin', 'admin@academia.com', '$2y$10$examplehashedpassword'); -- Senha: admin123 (hash exemplo)
+-- Cria a tabela de usuários do sistema.
+-- "IF NOT EXISTS" evita erro caso o script seja rodado mais de uma vez.
+CREATE TABLE IF NOT EXISTS usuarios (
+
+    -- id: identificador único de cada usuário
+    -- AUTO_INCREMENT: o banco gera o número automaticamente (1, 2, 3, ...)
+    -- PRIMARY KEY: garante que não existam dois usuários com o mesmo id
+    id INT AUTO_INCREMENT PRIMARY KEY,
+
+    -- nome: nome completo do usuário (obrigatório - NOT NULL)
+    nome VARCHAR(100) NOT NULL,
+
+    -- email: endereço de e-mail usado no login
+    -- UNIQUE: garante que não existam dois usuários com o mesmo e-mail
+    email VARCHAR(150) NOT NULL UNIQUE,
+
+    -- senha: armazena o HASH da senha gerado pelo PHP
+    -- NUNCA armazene a senha em texto puro! Sempre use hash!
+    -- VARCHAR(255) é o tamanho recomendado para hashes bcrypt do PHP
+    senha VARCHAR(255) NOT NULL,
+
+    -- criado_em: data e hora em que o registro foi criado
+    -- DEFAULT CURRENT_TIMESTAMP: preenchido automaticamente pelo banco
+    criado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+
+);
