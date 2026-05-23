@@ -2,9 +2,7 @@
 module.exports = {
   darkMode: "class",
   content: [
-    "./**/*.php",
-    "./pages/**/*.php",
-    "./**/*.html",
+    "./**/*.{html,php,js,ts,jsx,tsx}",
   ],
 
   theme: {
@@ -95,5 +93,8 @@ module.exports = {
       },
     },
   },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/forms'),
+    require('@tailwindcss/container-queries'),
+  ],
 }
