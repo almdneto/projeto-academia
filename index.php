@@ -8,6 +8,11 @@
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet" />
+    <style>
+        #cents-plano {
+            -webkit-text-stroke: 0.7px #abd600;
+        }
+    </style>
     <link rel="stylesheet" href="./css/output.css" />
     <title>Academia | Management Pro</title>
 </head>
@@ -27,7 +32,7 @@
             </div>
             <div class="flex items-center gap-4">
                 <button class="material-symbols-outlined text-secondary hover:text-primary-fixed transition-colors">notifications</button>
-                <a  class="bg-primary-container text-on-primary-container px-6 py-2 rounded-full font-label-lg text-label-lg active:scale-95 transition-all btn-hover-glow" href="./pages/auth/login.php">Começar Agora</a>
+                <a class="bg-primary-container text-on-primary-container px-6 py-2 rounded-full font-label-lg text-label-lg active:scale-95 transition-all btn-hover-glow" href="./pages/auth/login.php">Começar Agora</a>
             </div>
         </nav>
     </header>
@@ -35,7 +40,7 @@
         <!-- Hero Section -->
         <section class="relative min-h-[921px] flex items-center overflow-hidden">
             <div class="absolute inset-0 z-0">
-                <img class="w-full h-full object-cover grayscale opacity-40" data-alt="A powerful cinematic wide shot of a professional athlete performing a heavy deadlift in a gritty, high-end athletic facility. The lighting is dramatic and moody, featuring sharp highlights on the muscles and deep shadows in the background. The color palette is dark charcoal and slate gray, with an energetic atmosphere of focused determination and raw power." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCJnNzDsXvI5jO3ILMi6WCildwGAHNAOMoEcFeVyWc5fi9U7gtQu_7nNT6i4UrXoBC6BKfnk4RAF0OZlSDaBYmhTcrii5pT85IUkXL-aZpc0DxdRzaPadxaj0cRn-XbYYD8D7OJe0_Yqq6-jc2KS0SlMCqO3Mg2NoWkRnPvnznFAaVWkfFxIT-bfaTkWoPZXONa8YUnpCr5K58d0pRZckbJ0Cpt_ZgRQX47JY71cXASqPsmNLpo-kAJ-6SAUXJtpcKoHNNzTOB6GC0" />
+                <img class="w-full h-full object-cover grayscale opacity-40" data-alt="A powerful cinematic wide shot of a professional athlete performing a heavy deadlift in a gritty, high-end athletic facility. The lighting is dramatic and moody, featuring sharp highlights on the muscles and deep shadows in the background. The color palette is dark charcoal and slate gray, with an energetic atmosphere of focused determination and raw power." src="./images/index-hero.png" />
                 <div class="absolute inset-0 bg-gradient-to-r from-background via-background/80 to-transparent"></div>
                 <div class="absolute inset-0 hero-mesh pointer-events-none"></div>
             </div>
@@ -77,7 +82,7 @@
             <div class="grid grid-cols-1 md:grid-cols-12 gap-6 h-auto md:h-[600px]">
                 <!-- Musculação -->
                 <div class="md:col-span-7 relative group overflow-hidden rounded-xl bg-surface-container card-lift transition-all duration-500">
-                    <img class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:scale-110 group-hover:opacity-80 transition-all duration-700" data-alt="Close up action shot of a person lifting a heavy chrome dumbbell in a high-contrast gym setting. The lighting highlights the grit and metallic texture of the equipment. The overall aesthetic is dark mode professional, with deep charcoal tones and a focus on strength and endurance." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDFuEeuJFX4AheLpM_2-nOKK_7ZY1HkSvmD-6vhMU_BzO6RJM-nU8lML_W6idV44NcPtnnJjxbQEqFr0BhD0-ky4b2IfD_-URx8-IpLq30cNtSUzoMUcgEkSBPuLJeDl-fgFn2lK7-hR0cEraLdA9dB51rGKy82jTXJ_8_xi-nFzxMzn-97ZPIDN7It-yLrkIWVGKmFTHMpSi2rABma_ScSqWeyVwvb6jFiR1tLkDZosJLs2J1vOQylt3bjRESu8ChM_rQCO7f33-k" />
+                    <img class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:scale-110 group-hover:opacity-80 transition-all duration-700" data-alt="Close up action shot of a person lifting a heavy chrome dumbbell in a high-contrast gym setting. The lighting highlights the grit and metallic texture of the equipment. The overall aesthetic is dark mode professional, with deep charcoal tones and a focus on strength and endurance." src="./images/musc-hand.png" />
                     <div class="absolute inset-0 bg-gradient-to-t from-background to-transparent opacity-80 group-hover:opacity-60 transition-opacity"></div>
                     <div class="absolute bottom-0 left-0 p-8">
                         <h3 class="font-headline-md text-headline-md mb-2">Musculação</h3>
@@ -87,7 +92,7 @@
                 </div>
                 <!-- CrossFit -->
                 <div class="md:col-span-5 relative group overflow-hidden rounded-xl bg-surface-container card-lift transition-all duration-500">
-                    <img class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:scale-110 group-hover:opacity-80 transition-all duration-700" data-alt="An intense CrossFit workout scene featuring athletes performing functional movements in a high-octane environment. The lighting is moody and focused, with a cinematic dark gray color palette. Energy and dynamism are captured through motion blur and high-contrast lighting effects." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAcIsexi9gQS0qZz5Vt4zzduFozAMKJUDEyNqMITdBq6Sw0S7um7jyTgrSamGIRmcm4rq_6RFOnjaENzAolgT1tsk_NGB_fEqoDQFVb79f5658h188RE_08S0272p1u0z_Az6Eu4eY7CgWZ2sYRaXiJQoTMOSkTOWZ7_wNyZFgce9z3BmcPeloAb3gcoBZ20CQwrs9XvPwAFjMmNqj9Y68USzQu-EXUPjqOAkstdjcPcB6dwdYVvdtenyoZERUvMG_T3beISyivSz8" />
+                    <img class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:scale-110 group-hover:opacity-80 transition-all duration-700" data-alt="An intense CrossFit workout scene featuring athletes performing functional movements in a high-octane environment. The lighting is moody and focused, with a cinematic dark gray color palette. Energy and dynamism are captured through motion blur and high-contrast lighting effects." src="./images/cross-hero.png" />
                     <div class="absolute inset-0 bg-gradient-to-t from-background to-transparent opacity-80 group-hover:opacity-60 transition-opacity"></div>
                     <div class="absolute bottom-0 left-0 p-8">
                         <h3 class="font-headline-md text-headline-md mb-2">CrossFit</h3>
@@ -97,7 +102,7 @@
                 </div>
                 <!-- Pilates & Yoga -->
                 <div class="md:col-span-12 relative group overflow-hidden rounded-xl bg-surface-container card-lift transition-all duration-500 min-h-[250px]">
-                    <img class="absolute inset-0 w-full h-full object-cover opacity-50 group-hover:scale-105 group-hover:opacity-70 transition-all duration-700" data-alt="A serene Pilates studio setting with high-end reformers and a minimalist aesthetic. The lighting is soft and atmospheric, emphasizing balance and flow. Deep charcoal shadows contrast with subtle lime green accents, creating a calm yet energizing professional wellness space." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAe97W_LPjmHOb4g72lFntVpP_zSSlQIJnjm8LxqDMn-tIr9C117rge8gDL7nehpsWlUIVz-WBxuakIbn5kTS0gU-3VEzjXm_VPTXl_rhK68gelwm5Y9HXZuQE7KaGQMHgIGrB3nGzWv5Riyh-xh-PvKAnDa1v5RtHsES-jKRoDJflAr6tbXA0KP5uXENDWfw5_VWj3PFbJxNxrhI0Bp9wDkE_0ThQ9AwlBirvTwFCCl39HGtxmb2zNOcp1ZtZLdNMDFTKWdIQAL6c" />
+                    <img class="absolute inset-0 w-full h-full object-cover opacity-50 group-hover:scale-105 group-hover:opacity-70 transition-all duration-700" data-alt="A serene Pilates studio setting with high-end reformers and a minimalist aesthetic. The lighting is soft and atmospheric, emphasizing balance and flow. Deep charcoal shadows contrast with subtle lime green accents, creating a calm yet energizing professional wellness space." src="./images/pilates.png" />
                     <div class="absolute inset-0 bg-gradient-to-r from-background via-background/60 to-transparent group-hover:opacity-40 transition-opacity"></div>
                     <div class="absolute inset-y-0 left-0 p-8 flex flex-col justify-center max-w-md">
                         <h3 class="font-headline-md text-headline-md mb-2">Pilates &amp; Wellness</h3>
@@ -127,45 +132,48 @@
                         </div>
                         <ul class="space-y-4 mb-10 flex-grow">
                             <li class="flex items-center gap-3 font-body-sm text-body-sm text-secondary">
-                                <span class="material-symbols-outlined text-primary-fixed">check_circle</span> Musculação Ilimitada
+                                <span class="material-symbols-outlined text-primary-fixed">check_circle</span> <p>Musculação Ilimitada</p>
                             </li>
                             <li class="flex items-center gap-3 font-body-sm text-body-sm text-secondary">
-                                <span class="material-symbols-outlined text-primary-fixed">check_circle</span> Área de Cardio
+                                <span class="material-symbols-outlined text-primary-fixed">check_circle</span> <p>Área de Cardio</p>
                             </li>
                             <li class="flex items-center gap-3 font-body-sm text-body-sm text-secondary">
-                                <span class="material-symbols-outlined text-primary-fixed">check_circle</span> Armários Rotativos
+                                <span class="material-symbols-outlined text-primary-fixed">check_circle</span> <p>Armários Rotativos</p>
                             </li>
                         </ul>
-                        <button class="w-full py-4 rounded-lg border border-secondary text-primary font-label-lg text-label-lg hover:bg-white/5 transition-all">Selecionar Plano</button>
                     </div>
                     <!-- VIP Black (Featured) -->
                     <div class="bg-primary-container p-8 rounded-2xl border border-primary-fixed shadow-2xl scale-105 z-10 flex flex-col transition-all duration-300 plan-card-hover popular-card-glow">
                         <div class="flex justify-between items-start mb-8">
                             <div>
                                 <h3 class="font-headline-sm text-headline-sm mb-2 text-on-primary-container">VIP Black</h3>
-                                <div class="flex items-baseline gap-1">
+                                <div class="flex  items-baseline gap-1">
                                     <span class="text-on-primary-container/70 font-label-lg">R$</span>
-                                    <span class="text-5xl font-extrabold text-on-primary-container">199</span>
-                                    <span class="text-on-primary-container/70 font-label-sm">/mês</span>
+                                    <span class="text-5xl font-extrabold text-on-primary-container">169</span>
+                                    <span id="cents-plano" class="text-2xl font-extrabold self-start text-primary-fixed-dim"
+                                        style="-webkit-text-stroke: 1px #556d00; ">
+                                        ,99
+                                    </span>
+                                        <span class="text-on-primary-container/70 font-label-sm">/mês</span>
                                 </div>
                             </div>
                             <span class="bg-on-primary-container text-primary-container px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest">Popular</span>
                         </div>
                         <ul class="space-y-4 mb-10 flex-grow">
                             <li class="flex items-center gap-3 font-body-sm text-body-sm text-on-primary-container font-medium">
-                                <span class="material-symbols-outlined">stars</span> Todas as Modalidades
+                                <span class="material-symbols-outlined">stars</span> <p>Todas as Modalidades</p>
                             </li>
                             <li class="flex items-center gap-3 font-body-sm text-body-sm text-on-primary-container font-medium">
-                                <span class="material-symbols-outlined">stars</span> Acesso Multi-Unidades
+                                <span class="material-symbols-outlined">stars</span> <p>Acesso Multi-Unidades</p>
                             </li>
                             <li class="flex items-center gap-3 font-body-sm text-body-sm text-on-primary-container font-medium">
-                                <span class="material-symbols-outlined">stars</span> Convide um amigo (5x/mês)
+                                <span class="material-symbols-outlined">stars</span> <p>Convide um amigo (5x/mês)</p>
                             </li>
                             <li class="flex items-center gap-3 font-body-sm text-body-sm text-on-primary-container font-medium">
-                                <span class="material-symbols-outlined">stars</span> Avaliação Bioimpedância
+                                <span class="material-symbols-outlined">stars</span> <p>Avaliação Física Mensal</p>
                             </li>
                         </ul>
-                        <button class="w-full py-4 rounded-lg bg-on-primary-container text-primary-container font-headline-sm text-headline-sm hover:brightness-125 transition-all">Matricule-se Agora</button>
+                        <!-- <button class="w-full py-4 rounded-lg bg-on-primary-container text-primary-container font-headline-sm text-headline-sm hover:brightness-125 transition-all">Matricule-se Agora</button> -->
                     </div>
                     <!-- Semestral -->
                     <div class="bg-surface-container p-8 rounded-2xl border border-white/5 flex flex-col transition-all duration-300 plan-card-hover group">
@@ -179,16 +187,12 @@
                         </div>
                         <ul class="space-y-4 mb-10 flex-grow">
                             <li class="flex items-center gap-3 font-body-sm text-body-sm text-secondary">
-                                <span class="material-symbols-outlined text-primary-fixed">check_circle</span> Musculação + CrossFit
+                                <span class="material-symbols-outlined text-primary-fixed">check_circle</span> <p>Musculação + CrossFit</p>
                             </li>
                             <li class="flex items-center gap-3 font-body-sm text-body-sm text-secondary">
-                                <span class="material-symbols-outlined text-primary-fixed">check_circle</span> Sem taxa de matrícula
-                            </li>
-                            <li class="flex items-center gap-3 font-body-sm text-body-sm text-secondary">
-                                <span class="material-symbols-outlined text-primary-fixed">check_circle</span> Aulas Coletivas
+                                <span class="material-symbols-outlined text-primary-fixed">check_circle</span> <p>Aulas Coletivas</p>
                             </li>
                         </ul>
-                        <button class="w-full py-4 rounded-lg border border-secondary text-primary font-label-lg text-label-lg hover:bg-white/5 transition-all">Selecionar Plano</button>
                     </div>
                 </div>
             </div>
@@ -197,15 +201,15 @@
         <section class="py-section-gap border-y border-white/5 reveal">
             <div class="px-gutter max-w-[1440px] mx-auto grid grid-cols-2 md:grid-cols-4 gap-8">
                 <div class="text-center group">
-                    <span class="block font-headline-xl text-headline-xl text-primary mb-2 group-hover:scale-110 transition-transform cursor-default">15+</span>
+                    <span class="block font-headline-xl text-headline-xl text-primary mb-2 group-hover:scale-110 transition-transform cursor-default">8+</span>
                     <span class="text-secondary font-label-lg uppercase tracking-widest">Unidades</span>
                 </div>
                 <div class="text-center group">
-                    <span class="block font-headline-xl text-headline-xl text-primary-fixed mb-2 group-hover:scale-110 transition-transform cursor-default">50k+</span>
+                    <span class="block font-headline-xl text-headline-xl text-primary-fixed mb-2 group-hover:scale-110 transition-transform cursor-default">2k+</span>
                     <span class="text-secondary font-label-lg uppercase tracking-widest">Membros</span>
                 </div>
                 <div class="text-center group">
-                    <span class="block font-headline-xl text-headline-xl text-primary mb-2 group-hover:scale-110 transition-transform cursor-default">200+</span>
+                    <span class="block font-headline-xl text-headline-xl text-primary mb-2 group-hover:scale-110 transition-transform cursor-default">100+</span>
                     <span class="text-secondary font-label-lg uppercase tracking-widest">Personal Trainers</span>
                 </div>
                 <div class="text-center group">
@@ -262,7 +266,7 @@
                 <ul class="space-y-3">
                     <li class="flex items-start gap-3 text-secondary font-body-sm">
                         <span class="material-symbols-outlined text-primary-fixed">location_on</span>
-                        <span>Av. Paulista, 1000 - São Paulo, SP</span>
+                        <span>Av. Dom Lino, 1001 - Russas, CE</span>
                     </li>
                     <li class="flex items-center gap-3 text-secondary font-body-sm">
                         <span class="material-symbols-outlined text-primary-fixed">call</span>
@@ -277,10 +281,6 @@
         </div>
         <div class="max-w-[1440px] mx-auto px-gutter pt-base border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4">
             <p class="text-on-surface-variant font-label-sm text-label-sm">© 2024 Academia Management Pro. Todos os direitos reservados.</p>
-            <div class="flex gap-base">
-                <img alt="Secure Shield" class="h-6 opacity-50 hover:opacity-100 transition-opacity" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBAIx1R96Q4izHNV0sLbWlhnWjvtSJiSxgIptOIPOgSYtLSznEPEmKqNUv28YkYjbj3Yj-sFcWhFF67tOnNJJueEWQkVFMs46XJ9oSSU_gmVKNhg-b39GKQRuUAbpMqOTaN4aiQe8W0GrDCjgC5EGpOI33nLIBY8o4A0EBCYcuo99vrZf_3-YjtFjjrqQBM3-BF1zI-R082qtF88wk2DuQITur5lRClK9Yxs5FZZaB6vtG0kL946l3kdvh7t-CfqfrKwyIBOABveOo" />
-                <img alt="Encryption Shield" class="h-6 opacity-50 hover:opacity-100 transition-opacity" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA6XZqBN2c9OnntFzu2wblmHenCcVhOLflQbckcM0oMybELV3TPBpyAow_iw7G8Xq-r5UanHMGY7fj5UovEg0S3eJkFxy8ay-geldd4Fjh57i6350ZVXc8c2zHUCbDoHpTaT_E0ISnEMoI9PxpTq6--UJlBrC1QiSgEG5hfrON_X4lsTGna1io1bGzqMnkRWFKlWwZ4E7B4gSMPC-pp26xZFQ_Z7uLYztQbGxyVJZVPvDAAfjVazhvMo-Sx_ln-aUGnU2sFZWf7TLk" />
-            </div>
         </div>
     </footer>
     <script>
