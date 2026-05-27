@@ -33,8 +33,7 @@
       <img
         src="../../images/login-cadastro.png"
         alt="Atleta em ambiente de alta performance"
-        class="absolute inset-0 w-full h-full object-cover object-top"
-      >
+        class="absolute inset-0 w-full h-full object-cover object-top">
 
       <div class="absolute inset-0 bg-gradient-to-r from-background via-background/40 to-transparent"></div>
 
@@ -42,8 +41,7 @@
         <div class="flex items-center gap-base mb-6">
           <span
             class="material-symbols-outlined text-primary-fixed text-[40px]"
-            style="font-variation-settings:'FILL' 1;"
-          >
+            style="font-variation-settings:'FILL' 1;">
             fitness_center
           </span>
 
@@ -67,8 +65,7 @@
         <div class="mb-10 lg:hidden flex flex-col items-center">
           <span
             class="material-symbols-outlined text-primary-fixed text-[48px] mb-4"
-            style="font-variation-settings:'FILL' 1;"
-          >
+            style="font-variation-settings:'FILL' 1;">
             fitness_center
           </span>
 
@@ -108,8 +105,7 @@
               name="email"
               type="email"
               placeholder="Digite seu e-mail"
-              required
-            >
+              required>
           </div>
 
           <!-- Senha -->
@@ -126,15 +122,13 @@
                 name="password"
                 type="password"
                 placeholder="Digite sua senha"
-                required
-              >
+                required>
 
               <button
                 class="absolute right-4 top-1/2 -translate-y-1/2 text-on-surface-variant hover:text-primary-fixed transition-colors"
                 type="button"
                 id="togglePassword"
-                aria-label="Mostrar senha"
-              >
+                aria-label="Mostrar senha">
                 <span class="material-symbols-outlined">visibility</span>
               </button>
             </div>
@@ -148,9 +142,8 @@
 
                 <div
                   class="w-5 h-5 border-2 border-outline-variant rounded peer-checked:bg-primary-fixed peer-checked:border-primary-fixed transition-all flex items-center justify-center cursor-pointer"
-                  onclick="document.getElementById('remember').click()"
-                >
-                  <span class="material-symbols-outlined text-[14px] text-on-primary-fixed opacity-0 peer-checked:opacity-100">
+                  onclick="document.getElementById('remember').click()">
+                  <span class="material-symbols-outlined text-[14px] text-on-primary-fixed opacity-0 peer-checked:opacity-100" onclick="document.getElementById('remember').click()">
                     check
                   </span>
                 </div>
@@ -169,8 +162,7 @@
           <!-- Botão -->
           <button
             class="w-full bg-primary-fixed text-on-primary-fixed font-headline-sm text-headline-sm py-4 rounded-lg flex items-center justify-center gap-2 press-in transition-all electric-glow hover:brightness-110 active:scale-95"
-            type="submit"
-          >
+            type="submit">
             ENTRAR
             <span class="material-symbols-outlined">arrow_forward</span>
           </button>
@@ -192,13 +184,11 @@
           <div class="grid grid-cols-2 gap-4">
             <button
               type="button"
-              class="flex items-center justify-center gap-3 px-4 py-3 bg-surface-container border border-outline-variant rounded-lg hover:bg-surface-variant transition-colors"
-            >
+              class="flex items-center justify-center gap-3 px-4 py-3 bg-surface-container border border-outline-variant rounded-lg hover:bg-surface-variant transition-colors">
               <img
                 src="https://www.gstatic.com/images/branding/product/1x/gsa_512dp.png"
                 class="w-5 h-5"
-                alt="Google"
-              >
+                alt="Google">
 
               <span class="font-label-lg text-on-surface">
                 Google
@@ -207,10 +197,9 @@
 
             <button
               type="button"
-              class="flex items-center justify-center gap-3 px-4 py-3 bg-surface-container border border-outline-variant rounded-lg hover:bg-surface-variant transition-colors"
-            >
+              class="flex items-center justify-center gap-3 px-4 py-3 bg-surface-container border border-outline-variant rounded-lg hover:bg-surface-variant transition-colors">
               <svg class="w-5 h-5 text-[#0077b5] fill-current" viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
               </svg>
 
               <span class="font-label-lg text-on-surface">
@@ -290,4 +279,5 @@
     });
   </script>
 </body>
+
 </html>
