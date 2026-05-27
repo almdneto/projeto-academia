@@ -1,11 +1,6 @@
 <?php
 
-session_start();
-
-if (isset($_SESSION["user_id"])) {
-  header("Location: ../../home.php");
-  exit;
-}
+  require_once __DIR__ . '/../../includes/auth/guest_check.php';
 
 $erro = $_SESSION["erro_register"] ?? "";
 unset($_SESSION["erro_register"]);
@@ -113,7 +108,7 @@ unset($_SESSION["erro_register"]);
           </div>
         <?php endif; ?>
         <!-- Form -->
-        <form class="space-y-6 mt-8" id="registerForm" action="./registerAction.php" method="POST">
+        <form class="space-y-6 mt-8" id="registerForm" action="./actions/registerAction.php" method="POST">
 
           <!-- Nome completo -->
           <div class="space-y-2">

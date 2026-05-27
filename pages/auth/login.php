@@ -1,3 +1,7 @@
+<?php
+  require_once __DIR__ . '/../../includes/auth/guest_check.php';
+?>
+
 <!DOCTYPE html>
 <html class="dark" lang="pt-BR">
 
@@ -134,25 +138,9 @@
             </div>
           </div>
 
-          <!-- Lembrar / Esqueci -->
+          <!-- Esqueci -->
           <div class="flex items-center justify-between gap-4">
-            <label class="flex items-center gap-3 cursor-pointer group">
-              <div class="relative">
-                <input class="peer hidden" type="checkbox" id="remember" name="remember">
-
-                <div
-                  class="w-5 h-5 border-2 border-outline-variant rounded peer-checked:bg-primary-fixed peer-checked:border-primary-fixed transition-all flex items-center justify-center cursor-pointer"
-                  onclick="document.getElementById('remember').click()">
-                  <span class="material-symbols-outlined text-[14px] text-on-primary-fixed opacity-0 peer-checked:opacity-100" onclick="document.getElementById('remember').click()">
-                    check
-                  </span>
-                </div>
-              </div>
-
-              <span class="font-body-sm text-body-sm text-on-surface-variant group-hover:text-on-surface transition-colors">
-                Lembrar de mim
-              </span>
-            </label>
+            
 
             <a class="font-label-lg text-label-lg text-primary-fixed-dim hover:text-primary-fixed transition-colors" href="#">
               Esqueci minha senha
