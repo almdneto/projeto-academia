@@ -5,6 +5,6 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
 }
 
 if (!isset($_SESSION["user_id"])) {
-  header("Location: ../auth/login.php");
+  header("Location: /index.php");
   exit;
 }

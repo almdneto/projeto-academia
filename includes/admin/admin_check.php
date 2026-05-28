@@ -21,7 +21,7 @@ $user = $stmt->fetch(PDO::FETCH_OBJ);
 
 if (!$user){
   session_destroy();
-  header("Location: /pages/auth/login.php");
+  header("Location: /index.php");
   exit();
 }
 
