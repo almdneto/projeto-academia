@@ -23,7 +23,7 @@ if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
     exit;
 }
 
-$stmt = $conn->prepare('SELECT id, email, pass FROM usuarios WHERE email = :email LIMIT 1');
+$stmt = $conn->prepare('SELECT id, name, email, pass, level FROM usuarios WHERE email = :email LIMIT 1');
 $stmt->bindValue(':email', $email);
 $stmt->execute();
 
@@ -38,14 +38,8 @@ if (!$user || !password_verify($pass, $user->pass)) {
 session_regenerate_id(true);
 
 $_SESSION['user_id'] = $user->id;
-
-$userId = $_SESSION["user_id"];
-
-$stmt = $conn->prepare('SELECT id, level FROM usuarios WHERE id = :id LIMIT 1');
-$stmt->bindValue(':id', $userId, PDO::PARAM_INT);
-$stmt->execute();
-
-$user = $stmt->fetch(PDO::FETCH_OBJ);
+$_SESSION['user_name'] = $user->name;
+$_SESSION['user_level'] = (int)$user->level;
 
 $userLevel = (int)$user->level;
 

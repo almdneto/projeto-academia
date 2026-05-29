@@ -9,10 +9,10 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST'){
   exit();
 } 
 
-$name = $_POST['name'] ?? '';
+$name = trim($_POST['name'] ?? '');
 $email = trim($_POST['email'] ?? '');
 $pass = trim($_POST['pass'] ?? '');
-$confirmPass = $_POST["confirm_pass"] ?? "";
+$confirmPass = trim($_POST['confirm_pass'] ?? '');
 $terms = $_POST['terms'] ?? '';
 
 if ($name === '' || $email === '' || $pass === '' || $confirmPass === '') {

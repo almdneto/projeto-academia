@@ -1,6 +1,10 @@
 <?php
 require_once __DIR__ . '/../../includes/auth/auth_check.php';
 require_once __DIR__ . '/../../includes/admin/admin_check.php';
+require_once __DIR__ . '/functions/functions.php';
+
+$userFunctions = new UserFunctions();
+$users = $userFunctions->getUsers($conn);
 
 ?>
 
@@ -16,7 +20,7 @@ require_once __DIR__ . '/../../includes/admin/admin_check.php';
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet" />
-  
+
   <style>
     .material-symbols-outlined {
       font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
@@ -61,11 +65,8 @@ require_once __DIR__ . '/../../includes/admin/admin_check.php';
       </a>
     </nav>
     <div class="p-4 mt-auto">
-      <button class="w-full py-3 bg-primary-fixed text-on-primary-fixed font-bold rounded-lg active:scale-95 duration-150 transition-transform">
-        Add Member
-      </button>
       <div class="mt-6 pt-4 border-t border-surface-variant">
-        <a class="flex items-center gap-3 px-4 py-3 text-secondary-fixed-dim hover:text-error transition-colors" href="#">
+        <a class="flex items-center gap-3 px-4 py-3 text-secondary-fixed-dim hover:text-error transition-colors" href="/pages/auth/logout.php">
           <span class="material-symbols-outlined">logout</span>
           <span class="font-label-lg text-label-lg">Logout</span>
         </a>
@@ -119,31 +120,33 @@ require_once __DIR__ . '/../../includes/admin/admin_check.php';
             </thead>
             <tbody class="divide-y divide-surface-variant/30">
 
-              <tr class="hover:bg-primary-fixed/5 mx-4 transition-colors group">
-                <td class="px-6 py-4">
-                  <div class="flex items-center gap-3">
-                    <div>
-                      <p class="font-headline-sm text-sm text-primary">Ricardo Silva</p>
-                      <p class="text-label-sm text-on-surface-variant">ID: #8829</p>
+              <?php foreach ($users as $user): ?>
+                <tr class="hover:bg-primary-fixed/5 mx-4 transition-colors group">
+                  <td class="px-6 py-4">
+                    <div class="flex items-center gap-3">
+                      <div>
+                        <p class="font-headline-sm text-sm text-primary"><?= $user->name ?></p>
+                        <p class="text-label-sm text-on-surface-variant">ID: #<?= $user->id ?></p>
+                      </div>
                     </div>
-                  </div>
-                </td>
-                <td class="px-6 py-4 text-body-sm text-on-surface-variant">ricardo.silva@powergym.com</td>
-                <td class="px-6 py-4">
-                  <span class="px-3 py-1 rounded-full bg-secondary-container text-secondary-fixed text-[10px] font-bold uppercase tracking-widest">Administrador</span>
-                </td>
-                
-                <td class="px-6 py-4 text-right">
-                  <div class="flex items-center justify-end gap-2">
-                    <button class="p-2 rounded-lg hover:bg-surface-container-highest text-on-surface-variant hover:text-primary-fixed transition-all active:scale-90">
-                      <span class="material-symbols-outlined">edit</span>
-                    </button>
-                    <button class="p-2 rounded-lg hover:bg-surface-container-highest text-on-surface-variant hover:text-error transition-all active:scale-90">
-                      <span class="material-symbols-outlined">delete</span>
-                    </button>
-                  </div>
-                </td>
-              </tr>
+                  </td>
+                  <td class="px-6 py-4 text-body-sm text-on-surface-variant"><?= $user->email ?></td>
+                  <td class="px-6 py-4">
+                    <span class="px-3 py-1 rounded-full bg-secondary-container text-secondary-fixed text-[10px] font-bold uppercase tracking-widest"><?= $user->level ?></span>
+                  </td>
+
+                  <td class="px-6 py-4 text-right">
+                    <div class="flex items-center justify-end gap-2">
+                      <a href="./actions/edit.php?id=<?= $user->id ?>" class="p-2 rounded-lg hover:bg-surface-container-highest text-on-surface-variant hover:text-primary-fixed transition-all active:scale-90">
+                        <span class="material-symbols-outlined">edit</span>
+                      </a>
+                      <button class="p-2 rounded-lg hover:bg-surface-container-highest text-on-surface-variant hover:text-error transition-all active:scale-90">
+                        <span class="material-symbols-outlined">delete</span>
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+              <?php endforeach; ?>
 
             </tbody>
           </table>
