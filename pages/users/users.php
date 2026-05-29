@@ -121,31 +121,33 @@ $users = $userFunctions->getUsers($conn);
             <tbody class="divide-y divide-surface-variant/30">
 
               <?php foreach ($users as $user): ?>
-                <tr class="hover:bg-primary-fixed/5 mx-4 transition-colors group">
-                  <td class="px-6 py-4">
-                    <div class="flex items-center gap-3">
-                      <div>
-                        <p class="font-headline-sm text-sm text-primary"><?= $user->name ?></p>
-                        <p class="text-label-sm text-on-surface-variant">ID: #<?= $user->id ?></p>
+                <form action="./actions/delete.php" method="POST" onsubmit="return confirm('Tem certeza que deseja excluir este usuário?');">
+                  <tr class="hover:bg-primary-fixed/5 mx-4 transition-colors group">
+                    <td class="px-6 py-4">
+                      <div class="flex items-center gap-3">
+                        <div>
+                          <p class="font-headline-sm text-sm text-primary"><?= $user->name ?></p>
+                          <p class="text-label-sm text-on-surface-variant">ID: #<?= $user->id ?></p>
+                        </div>
                       </div>
-                    </div>
-                  </td>
-                  <td class="px-6 py-4 text-body-sm text-on-surface-variant"><?= $user->email ?></td>
-                  <td class="px-6 py-4">
-                    <span class="px-3 py-1 rounded-full bg-secondary-container text-secondary-fixed text-[10px] font-bold uppercase tracking-widest"><?= $user->level ?></span>
-                  </td>
-
-                  <td class="px-6 py-4 text-right">
-                    <div class="flex items-center justify-end gap-2">
-                      <a href="./actions/edit.php?id=<?= $user->id ?>" class="p-2 rounded-lg hover:bg-surface-container-highest text-on-surface-variant hover:text-primary-fixed transition-all active:scale-90">
-                        <span class="material-symbols-outlined">edit</span>
-                      </a>
-                      <button class="p-2 rounded-lg hover:bg-surface-container-highest text-on-surface-variant hover:text-error transition-all active:scale-90">
-                        <span class="material-symbols-outlined">delete</span>
-                      </button>
-                    </div>
-                  </td>
-                </tr>
+                    </td>
+                    <td class="px-6 py-4 text-body-sm text-on-surface-variant"><?= $user->email ?></td>
+                    <td class="px-6 py-4">
+                      <span class="px-3 py-1 rounded-full bg-secondary-container text-secondary-fixed text-[10px] font-bold uppercase tracking-widest"><?= $user->level ?></span>
+                    </td>
+                    <td class="px-6 py-4 text-right">
+                      <div class="flex items-center justify-end gap-2">
+                        <a href="./actions/edit.php?id=<?= $user->id ?>" class="p-2 rounded-lg hover:bg-surface-container-highest text-on-surface-variant hover:text-primary-fixed transition-all active:scale-90">
+                          <span class="material-symbols-outlined">edit</span>
+                        </a>
+                        <input type="hidden" name="id" value="<?= $user->id ?>">
+                        <button type="submit" class="p-2 rounded-lg hover:bg-surface-container-highest text-on-surface-variant hover:text-error transition-all active:scale-90">
+                          <span class="material-symbols-outlined">delete</span>
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                </form>
               <?php endforeach; ?>
 
             </tbody>

@@ -760,7 +760,7 @@ $user = $userFunctions->getUserById($conn, $_GET['id'] ?? header('Location: /pag
 
       <!-- Form Card -->
       <div class="form-card">
-        <form id="create-form">
+        <form id="create-form" method="post" action="/pages/users/actions/update.php?id=<?= $user->id ?>">
           <div class="form-grid">
 
             <!-- Nome -->
@@ -777,9 +777,9 @@ $user = $userFunctions->getUserById($conn, $_GET['id'] ?? header('Location: /pag
 
             <!-- Nível de Acesso -->
             <div class="field">
-              <label for="access">Nível de Acesso</label>
+              <label for="level">Nível de Acesso</label>
               <div class="select-wrap">
-                <select id="access" name="access">
+                <select id="level" name="level">
                   <option value="Usuário Comum" <?= $user->level === 'Usuário Comum' ? 'selected' : '' ?>>Usuário Comum</option>
                   <option value="Administrador" <?= $user->level === 'Administrador' ? 'selected' : '' ?>>Administrador</option>
                 </select>
@@ -791,10 +791,10 @@ $user = $userFunctions->getUserById($conn, $_GET['id'] ?? header('Location: /pag
 
             <!-- Actions -->
             <div class="form-actions">
-              <a class="btn-primary" type="submit" id="submit-btn" href="/pages/users/actions/update.php?id=<?= $user->id ?>&name=<?= urlencode($user->name) ?>&email=<?= urlencode($user->email) ?>&level=<?= urlencode($user->level) ?>">
+              <button class="btn-primary" type="submit" id="submit-btn">
                 <span class="material-symbols-outlined">person_add</span>
                 Atualizar Usuário
-              </a>
+              </button>
               <a class="btn-ghost" href="/pages/users/users.php">
                 Voltar
               </a>
@@ -824,36 +824,13 @@ $user = $userFunctions->getUserById($conn, $_GET['id'] ?? header('Location: /pag
   </div>
 
   <script>
-    // Toggle password visibility
-    const pw = document.getElementById('password');
-    const pwIcon = document.getElementById('pw-icon');
-    document.getElementById('toggle-pw').addEventListener('click', () => {
-      const show = pw.type === 'password';
-      pw.type = show ? 'text' : 'password';
-      pwIcon.textContent = show ? 'visibility_off' : 'visibility';
-    });
-
-    // Form submit feedback
     const form = document.getElementById('create-form');
     const btn = document.getElementById('submit-btn');
-    form.addEventListener('submit', e => {
-      e.preventDefault();
+
+    form.addEventListener('submit', () => {
       btn.innerHTML = '<span class="material-symbols-outlined spin">sync</span> Processando...';
       btn.classList.add('loading');
       btn.disabled = true;
-
-      setTimeout(() => {
-        btn.classList.remove('loading');
-        btn.classList.add('success');
-        btn.innerHTML = '<span class="material-symbols-outlined">check_circle</span> Usuário Criado!';
-
-        setTimeout(() => {
-          btn.classList.remove('success');
-          btn.disabled = false;
-          btn.innerHTML = '<span class="material-symbols-outlined">person_add</span> Criar Usuário';
-          form.reset();
-        }, 2200);
-      }, 1500);
     });
   </script>
 </body>
