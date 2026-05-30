@@ -3,10 +3,36 @@
 require_once __DIR__ . '/../../../config/database.php';
 
 
-class UserFunctions {
+class UserFunctions
+{
+  //Criação de usuário
+  public function createUser($conn, $name, $email, $pass, $level)
+  {
+    $name = trim($name);
+    $email = trim($email);
+    $hashedPass = password_hash($pass, PASSWORD_DEFAULT);
+    $level = $level === 'Administrador' ? 1 : 0;
+
+    $stmt = $conn->prepare('INSERT INTO users (name, email, pass, level) VALUES (:name, :email, :pass, :level)');
+    $stmt->bindValue(':name', $name);
+    $stmt->bindValue(':email', $email);
+    $stmt->bindValue(':pass', $hashedPass);
+    $stmt->bindValue(':level', $level, PDO::PARAM_INT);
+    return $stmt->execute();
+  }
+
+  public function emailExists($conn, $email)
+  {
+    $stmt = $conn->prepare("SELECT id FROM users WHERE email = :email");
+    $stmt->bindValue(':email', $email);
+    $stmt->execute();
+    return $stmt->rowCount() > 0;
+  }
+  
   //Exibição de usuários na tabela
-  public function getUsers($conn) {
-    $stmt = $conn->prepare('SELECT id, name, email, level FROM usuarios');
+  public function getUsers($conn)
+  {
+    $stmt = $conn->prepare('SELECT id, name, email, level FROM users');
     $stmt->execute();
     $users = $stmt->fetchAll(PDO::FETCH_OBJ);
 
@@ -17,8 +43,9 @@ class UserFunctions {
     return $users;
   }
   //Edição
-  public function getUserById($conn, $userId) {
-    $stmt = $conn->prepare('SELECT id, name, email, level FROM usuarios WHERE id = :id LIMIT 1');
+  public function getUserById($conn, $userId)
+  {
+    $stmt = $conn->prepare('SELECT id, name, email, level FROM users WHERE id = :id LIMIT 1');
     $stmt->bindValue(':id', $userId, PDO::PARAM_INT);
     $stmt->execute();
     $user = $stmt->fetch(PDO::FETCH_OBJ);
@@ -30,12 +57,13 @@ class UserFunctions {
     return $user;
   }
 
-  public function updateUser($conn, $userId, $name, $email, $level) {
+  public function updateUser($conn, $userId, $name, $email, $level)
+  {
     $name = trim($name);
     $email = trim($email);
     $level = $level === 'Administrador' ? 1 : 0;
 
-    $stmt = $conn->prepare('UPDATE usuarios SET name = :name, email = :email, level = :level WHERE id = :id');
+    $stmt = $conn->prepare('UPDATE users SET name = :name, email = :email, level = :level WHERE id = :id');
     $stmt->bindValue(':name', $name);
     $stmt->bindValue(':email', $email);
     $stmt->bindValue(':level', $level, PDO::PARAM_INT);
@@ -43,9 +71,10 @@ class UserFunctions {
     return $stmt->execute();
   }
 
-
-  public function deleteUser($conn, $userId) {
-    $stmt = $conn->prepare('DELETE FROM usuarios WHERE id = :id');
+  //Exclusão
+  public function deleteUser($conn, $userId)
+  {
+    $stmt = $conn->prepare('DELETE FROM users WHERE id = :id');
     $stmt->bindValue(':id', $userId, PDO::PARAM_INT);
     return $stmt->execute();
   }

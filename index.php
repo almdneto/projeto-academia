@@ -37,7 +37,6 @@
                 <a class="px-4 py-2 font-label-lg text-label-lg text-secondary hover:text-primary-fixed transition-colors" href="#contato">Unidades</a>
             </div>
             <div class="flex items-center gap-4">
-                <button class="material-symbols-outlined text-secondary hover:text-primary-fixed transition-colors">notifications</button>
                 <a class="bg-primary-container text-on-primary-container px-6 py-2 rounded-full font-label-lg text-label-lg active:scale-95 transition-all btn-hover-glow" href="./pages/auth/login.php">Começar Agora</a>
             </div>
         </nav>

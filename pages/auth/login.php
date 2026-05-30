@@ -41,8 +41,8 @@ unset($_SESSION['erro_login']);
   </style>
 </head>
 
-<body class="bg-background text-on-background font-body-md overflow-y-auto lg:overflow-hidden">
-  <main class="flex min-h-screen lg:h-screen w-full">
+<body class="bg-background text-on-background font-body-md overflow-y-auto ">
+  <main class="flex min-h-screen w-full">
 
     <!-- Hero -->
     <section class="hidden lg:block lg:w-3/5 relative">
@@ -74,7 +74,7 @@ unset($_SESSION['erro_login']);
     </section>
 
     <!-- Formulário -->
-    <section class="w-full lg:w-2/5 flex flex-col justify-center items-center bg-background border-l border-outline-variant/20 px-4 sm:px-6 lg:px-gutter py-8 lg:py-0">
+    <section class="w-full lg:w-2/5 flex flex-col justify-center items-center bg-background border-l border-outline-variant/20 px-4 sm:px-6 lg:px-gutter py-8 ">
       <div class="w-full max-w-md px-4 sm:px-6">
 
         <!-- Logo mobile -->
@@ -140,7 +140,7 @@ unset($_SESSION['erro_login']);
                 class="w-full bg-surface-container border border-outline-variant rounded-lg p-4 pr-12 font-body-md text-on-surface focus:outline-none focus:border-primary-fixed focus:ring-1 focus:ring-primary-fixed transition-all placeholder:text-on-surface-variant/40"
                 id="password"
                 name="pass"
-                type="pass"
+                type="password"
                 placeholder="Digite sua senha"
                 required>
 

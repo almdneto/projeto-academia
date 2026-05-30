@@ -44,7 +44,7 @@ $_SESSION['user_level'] = (int)$user->level;
 $userLevel = (int)$user->level;
 
 if ($userLevel === 1) {
-  header('Location: /pages/users/users.php');
+  header('Location: /pages/users/index.php');
   exit();
 } else {
   header('Location: /pages/home.php');

@@ -30,6 +30,4 @@ if ((int)$user->level !== 1) {
 
   header("Location: /pages/home.php");
   exit();
-} else {
-  header("Location: /pages/users/index.php");
 }

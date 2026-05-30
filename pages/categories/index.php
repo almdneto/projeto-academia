@@ -1,10 +1,15 @@
 <?php
 require_once __DIR__ . '/../../includes/auth/auth_check.php';
-require_once __DIR__ . '/../../includes/admin/admin_check.php';
+require_once __DIR__ . '/../../includes/admin/user_check.php';
 require_once __DIR__ . '/functions/functions.php';
 
-$userFunctions = new UserFunctions();
-$users = $userFunctions->getUsers($conn);
+$categoryFunctions = new CategoryFunctions();
+$categories = $categoryFunctions->getCategories($conn);
+
+$erro = $_SESSION["erro_message"] ?? "";
+unset($_SESSION["erro_message"]);
+$sucess = $_SESSION["success_message"] ?? "";
+unset($_SESSION["success_message"]);
 
 ?>
 
@@ -15,13 +20,32 @@ $users = $userFunctions->getUsers($conn);
 <head>
   <meta charset="utf-8" />
   <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-  <title>Power &amp; Performance - Gestão de Usuários</title>
+  <title>Power &amp; Performance - Gestão de Categorias</title>
   <link rel="stylesheet" href="/css/output.css">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet" />
 
   <style>
+    .alert-error {
+      display: inline-flex;
+      border: 1px solid #ef4444 !important;
+      background: rgba(239, 68, 68, 0.08) !important;
+      color: #fecaca !important;
+      border-radius: 8px;
+      padding: 16px;
+      font-weight: 600;
+    }
+
+    .alert-success {
+      border: 1px solid #10b981 !important;
+      background: rgba(16, 185, 129, 0.08) !important;
+      color: #34d399 !important;
+      border-radius: 8px;
+      padding: 16px;
+      font-weight: 600;
+    }
+
     .material-symbols-outlined {
       font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
     }
@@ -58,10 +82,10 @@ $users = $userFunctions->getUsers($conn);
         <span class="material-symbols-outlined">inventory_2</span>
         <span class="font-label-lg text-label-lg">Produtos</span>
       </a>
-      <!-- Active Tab: Usuários -->
+      <!-- Active Tab: Categorias -->
       <a class="flex items-center gap-3 px-4 py-3 text-primary-fixed border-l-4 border-primary-fixed bg-primary-container/10 font-bold" href="#">
-        <span class="material-symbols-outlined">group</span>
-        <span class="font-label-lg text-label-lg">Usuários</span>
+        <span class="material-symbols-outlined">category</span>
+        <span class="font-label-lg text-label-lg">Categorias</span>
       </a>
     </nav>
     <div class="p-4 mt-auto">
@@ -83,14 +107,7 @@ $users = $userFunctions->getUsers($conn);
         </div>
       </div>
       <div class="flex items-center gap-6">
-        <div class="relative hidden sm:block">
-          <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-sm">search</span>
-          <input class="bg-surface-container-low border border-surface-variant rounded-full py-2 pl-10 pr-4 text-body-sm focus:outline-none focus:border-primary-fixed focus:ring-1 focus:ring-primary-fixed w-64 transition-all" placeholder="Buscar usuário..." type="text" />
-        </div>
-        <div class="flex items-center gap-4 text-on-surface-variant mr-4">
-          <button class="material-symbols-outlined hover:text-primary-fixed transition-colors active:scale-95">notifications</button>
-          <button class="material-symbols-outlined hover:text-primary-fixed transition-colors active:scale-95">settings</button>
-        </div>
+
       </div>
     </header>
     <!-- Canvas -->
@@ -98,49 +115,58 @@ $users = $userFunctions->getUsers($conn);
       <!-- Page Header -->
       <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
-          <h2 class="font-headline-lg ml-4 text-headline-lg text-primary text-primary-fixed-dim">Gestão de Usuários</h2>
-          <p class="text-on-surface-variant ml-4 font-body-md">Visualize e gerencie as permissões de acesso da sua equipe.</p>
+          <h2 class="font-headline-lg ml-4 text-headline-lg text-primary text-primary-fixed-dim">Gestão de Categorias</h2>
+          <p class="text-on-surface-variant ml-4 font-body-md">Visualize e gerencie as categorias de produtos.</p>
         </div>
-        <button class="flex items-center gap-2 mr-4 bg-primary-fixed text-on-primary-fixed px-6 py-3 rounded-lg font-bold hover:brightness-110 active:scale-95 transition-all shadow-lg shadow-primary-fixed/10">
-          <span class="material-symbols-outlined">person_add</span>
-          <span>Novo Usuário</span>
-        </button>
+        <a href="./actions/create.php" class="flex items-center gap-2 mr-4 bg-primary-fixed text-on-primary-fixed px-6 py-3 rounded-lg font-bold hover:brightness-110 active:scale-95 transition-all shadow-lg shadow-primary-fixed/10">
+          <span class="material-symbols-outlined">add</span>
+          <span>Nova Categoria</span>
+        </a>
       </div>
-      <!-- User Table -->
+
+      <?php if ($erro !== ""): ?>
+        <div class="m-4 alert-error">
+          <?php echo htmlspecialchars($erro); ?>
+        </div>
+      <?php endif; ?>
+
+      <?php if ($sucess !== ""): ?>
+        <div class="m-4 alert-success">
+          <?php echo htmlspecialchars($sucess); ?>
+        </div>
+      <?php endif; ?>
+
+      <!-- Category Table -->
       <div class="bg-surface-container-lowest rounded-xl mx-4 border border-surface-variant/50 overflow-hidden shadow-2xl">
         <div class="overflow-x-auto">
           <table class="w-full text-left border-collapse ">
             <thead>
               <tr class="bg-surface-container border-b border-surface-variant ">
-                <th class="px-6 py-2 font-label-lg text-on-surface-variant uppercase tracking-wider">Usuário</th>
-                <th class="px-6 py-2 font-label-lg text-on-surface-variant uppercase tracking-wider">E-mail</th>
-                <th class="px-6 py-2 font-label-lg text-on-surface-variant uppercase tracking-wider">Nível de Acesso</th>
+                <th class="px-6 py-2 font-label-lg text-on-surface-variant uppercase tracking-wider">Categoria</th>
+                <th class="px-6 py-2 font-label-lg text-on-surface-variant uppercase tracking-wider">Criado em</th>
                 <th class="px-6 py-2 font-label-lg text-on-surface-variant uppercase tracking-wider text-right">Ações</th>
               </tr>
             </thead>
             <tbody class="divide-y divide-surface-variant/30">
 
-              <?php foreach ($users as $user): ?>
-                <form action="./actions/delete.php" method="POST" onsubmit="return confirm('Tem certeza que deseja excluir este usuário?');">
+              <?php foreach ($categories as $category): ?>
+                <form action="./actions/delete.php" method="POST" onsubmit="return confirm('Tem certeza que deseja excluir esta categoria?');">
                   <tr class="hover:bg-primary-fixed/5 mx-4 transition-colors group">
                     <td class="px-6 py-4">
                       <div class="flex items-center gap-3">
                         <div>
-                          <p class="font-headline-sm text-sm text-primary"><?= $user->name ?></p>
-                          <p class="text-label-sm text-on-surface-variant">ID: #<?= $user->id ?></p>
+                          <p class="font-headline-sm text-sm text-primary"><?= $category->name ?></p>
+                          <p class="text-label-sm text-on-surface-variant">ID: #<?= $category->id ?></p>
                         </div>
                       </div>
                     </td>
-                    <td class="px-6 py-4 text-body-sm text-on-surface-variant"><?= $user->email ?></td>
-                    <td class="px-6 py-4">
-                      <span class="px-3 py-1 rounded-full bg-secondary-container text-secondary-fixed text-[10px] font-bold uppercase tracking-widest"><?= $user->level ?></span>
-                    </td>
+                    <td class="px-6 py-4 text-body-sm text-on-surface-variant"><?= $category->created_at ?></td>
                     <td class="px-6 py-4 text-right">
                       <div class="flex items-center justify-end gap-2">
-                        <a href="./actions/edit.php?id=<?= $user->id ?>" class="p-2 rounded-lg hover:bg-surface-container-highest text-on-surface-variant hover:text-primary-fixed transition-all active:scale-90">
+                        <a href="./actions/edit.php?id=<?= $category->id ?>" class="p-2 rounded-lg hover:bg-surface-container-highest text-on-surface-variant hover:text-primary-fixed transition-all active:scale-90">
                           <span class="material-symbols-outlined">edit</span>
                         </a>
-                        <input type="hidden" name="id" value="<?= $user->id ?>">
+                        <input type="hidden" name="id" value="<?= $category->id ?>">
                         <button type="submit" class="p-2 rounded-lg hover:bg-surface-container-highest text-on-surface-variant hover:text-error transition-all active:scale-90">
                           <span class="material-symbols-outlined">delete</span>
                         </button>
@@ -155,18 +181,6 @@ $users = $userFunctions->getUsers($conn);
         </div>
         <!-- Pagination -->
         <div class="px-6 py-4 bg-surface-container-low flex items-center justify-between ">
-          <p class="text-label-sm text-on-surface-variant">Mostrando 1-4 de 24 usuários</p>
-          <div class="flex items-center gap-2">
-            <button class="p-1 rounded bg-surface-variant text-on-surface-variant hover:bg-primary-fixed hover:text-on-primary-fixed transition-all">
-              <span class="material-symbols-outlined text-sm">chevron_left</span>
-            </button>
-            <button class="w-8 h-8 rounded bg-primary-fixed text-on-primary-fixed font-bold text-xs">1</button>
-            <button class="w-8 h-8 rounded bg-surface-variant text-on-surface text-xs hover:bg-surface-container-highest">2</button>
-            <button class="w-8 h-8 rounded bg-surface-variant text-on-surface text-xs hover:bg-surface-container-highest">3</button>
-            <button class="p-1 rounded bg-surface-variant text-on-surface-variant hover:bg-primary-fixed hover:text-on-primary-fixed transition-all">
-              <span class="material-symbols-outlined text-sm">chevron_right</span>
-            </button>
-          </div>
         </div>
       </div>
     </section>

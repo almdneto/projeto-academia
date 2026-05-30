@@ -1,10 +1,18 @@
 <?php
 
+require_once __DIR__ . '/../../../includes/auth/auth_check.php';
+require_once __DIR__ . '/../../../includes/admin/user_check.php';
 require_once __DIR__ . '/../functions/functions.php';
+
+$userId = $_GET['id'] ?? header('Location: /pages/error/users/errorId.php');;
+
 $userFunctions = new UserFunctions();
-$user = $userFunctions->getUserById($conn, $_GET['id'] ?? header('Location: /pages/error/users/errorId.php'));
+$user = $userFunctions->getUserById($conn, (int)$userId);
 
-
+if (!$user) {
+  header('Location: /pages/error/users/errorId.php');
+  exit;
+}
 
 ?>
 
@@ -14,6 +22,7 @@ $user = $userFunctions->getUserById($conn, $_GET['id'] ?? header('Location: /pag
 <head>
   <meta charset="utf-8" />
   <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <link rel="stylesheet" href="/css/output.css">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap" rel="stylesheet" />
   <style>
@@ -795,7 +804,7 @@ $user = $userFunctions->getUserById($conn, $_GET['id'] ?? header('Location: /pag
                 <span class="material-symbols-outlined">person_add</span>
                 Atualizar Usuário
               </button>
-              <a class="btn-ghost" href="/pages/users/users.php">
+              <a class="btn-ghost" href="/pages/users/index.php">
                 Voltar
               </a>
             </div>

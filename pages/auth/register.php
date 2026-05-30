@@ -60,8 +60,8 @@ unset($_SESSION["erro_register"]);
   </style>
 </head>
 
-<body class="bg-background text-on-background font-body-md overflow-y-auto lg:overflow-hidden">
-  <main class="flex min-h-screen lg:h-screen w-full">
+<body class="bg-background text-on-background font-body-md overflow-y-auto ">
+  <main class="flex min-h-screen  w-full">
 
     <!-- ── Hero Column ─────────────────────────────────────────────── -->
     <section class="hidden lg:block lg:w-3/5 relative overflow-hidden">
@@ -85,7 +85,7 @@ unset($_SESSION["erro_register"]);
     </section>
 
     <!-- ── Form Column ─────────────────────────────────────────────── -->
-    <section class="w-full lg:w-2/5 flex flex-col justify-center items-center bg-background border-l border-outline-variant/20 px-4 sm:px-6 lg:px-gutter py-8 lg:py-0">
+    <section class="w-full lg:w-2/5 flex flex-col justify-center items-center bg-background border-l border-outline-variant/20 px-4 sm:px-6 lg:px-gutter py-8">
       <div class="w-full max-w-md px-4 sm:px-6">
 
         <!-- Mobile logo (hidden on desktop) -->

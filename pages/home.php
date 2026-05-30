@@ -1,6 +1,7 @@
 <?php
 
 require_once __DIR__ . '/../includes/auth/auth_check.php';
+require_once __DIR__ . '/../includes/admin/admin_check.php';
 
 $erroPermission = $_SESSION['erro_permission'] ?? '';
 unset($_SESSION['erro_permission']);
@@ -79,10 +80,12 @@ unset($_SESSION['erro_permission']);
         Join Now
       </button>
     </div>
-    <div class="flex items-center gap-4">
-      <span class="material-symbols-outlined text-on-surface cursor-pointer">notifications</span>
-      <span class="material-symbols-outlined text-on-surface cursor-pointer">settings</span>
-    </div>
+    <div class="">
+        <a class="flex items-center gap-3 px-4 py-3 text-secondary-fixed-dim hover:text-error transition-colors" href="/pages/auth/logout.php">
+          <span class="material-symbols-outlined">logout</span>
+          <span class="font-label-lg text-label-lg">Logout</span>
+        </a>
+      </div>
   </header>
   <main class="mt-20">
     <!-- Hero Section -->
